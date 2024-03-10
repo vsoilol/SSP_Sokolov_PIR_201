@@ -10,9 +10,21 @@ export const Navigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start">
-        <Stack.Screen name="Start" component={StartScreen} />
-        <Stack.Screen name="Second" component={SecondScreen} />
-        <Stack.Screen name="Third" component={ThirdScreen} />
+        <Stack.Screen
+          name="Start"
+          component={StartScreen}
+          options={{ title: 'Начало' }}
+        />
+        <Stack.Screen
+          name="Second"
+          component={SecondScreen}
+          options={{ title: 'Второй' }}
+        />
+        <Stack.Screen
+          name="Third"
+          component={ThirdScreen}
+          options={{ title: 'Третий' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

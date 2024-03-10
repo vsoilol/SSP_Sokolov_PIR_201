@@ -6,17 +6,17 @@ export const SecondScreen = () => {
 
   return (
     <View>
-      <Text style={styles.text}>second screen</Text>
+      <Text style={styles.text}>Второй экран</Text>
       <View style={styles.buttons_view}>
         <View style={styles.button_wrapper}>
           <Button
-            title="go back"
+            title="Вернуться назад"
             onPress={() => navigation.navigate('Start')}
           />
         </View>
         <View>
           <Button
-            title="to third screen"
+            title="Перейти на третий экран"
             onPress={() => navigation.navigate('Third')}
           />
         </View>
