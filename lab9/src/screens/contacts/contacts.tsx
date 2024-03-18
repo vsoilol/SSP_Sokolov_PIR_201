@@ -5,7 +5,7 @@ import {
   FlatList,
   TouchableOpacity,
   StyleSheet,
-  Image,
+  Button,
 } from 'react-native';
 import { ContactItem } from './contact-item';
 import { useAppNavigation } from '@src/hooks/use-app-navigation';
@@ -13,18 +13,21 @@ import { useAppNavigation } from '@src/hooks/use-app-navigation';
 const contactsData: IUser[] = [
   {
     id: 1,
-    name: 'John Doe',
+    name: 'Джон Смит',
     photo: { uri: 'https://i.ibb.co/6XBZgw6/kachok-s-noutbukom-mem-6.jpg' },
+    location: 'Бостон, США',
   },
   {
     id: 2,
-    name: 'Jane Smith',
+    name: 'Джонатан Смит',
     photo: { uri: 'https://i.ibb.co/xDWFbV6/images.jpg' },
+    location: 'Нью-Йорк, США',
   },
   {
     id: 3,
-    name: 'Alice Johnson',
+    name: 'Ли Джонсон',
     photo: { uri: 'https://i.ibb.co/TP77r73/kachok-s-noutbukom-mem-4.jpg' },
+    location: 'Пекин, Китай',
   },
 ];
 
@@ -47,6 +50,14 @@ export const Contacts = () => {
         }}
         keyExtractor={item => item.id.toString()}
       />
+
+      <View style={{ paddingBottom: 20 }}>
+        <Button
+          title={'Закрыть'}
+          color={'green'}
+          onPress={() => navigation.navigate('Home')}
+        />
+      </View>
     </View>
   );
 };

@@ -5,6 +5,7 @@ export type RootStackParamList = {
   Contacts: undefined;
   Detail: { user: IUser } | undefined;
   Home: undefined;
+  Register: undefined;
 };
 
 export type DetailProps = NativeStackScreenProps<RootStackParamList, 'Detail'>;

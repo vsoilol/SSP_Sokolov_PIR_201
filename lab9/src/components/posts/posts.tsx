@@ -63,7 +63,7 @@ export const Posts = ({
               fontSize: 12,
               color: '#9ca1a2',
             }}>
-            2 mins ago
+            2 мин. назад
           </Text>
         </View>
         <View

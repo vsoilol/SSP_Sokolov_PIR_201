@@ -24,6 +24,10 @@ export const Home = () => {
     setIsPopularSelected(!isPopularSelected);
   };
 
+  const handleLogout = () => {
+    navigation.navigate('Register');
+  };
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -37,15 +41,27 @@ export const Home = () => {
               source={images.headerIcon}
               style={{ width: 20, height: 20 }}
             />
-            <Text style={styles.settingsText}>Contacts</Text>
+            <Text style={styles.settingsText}>Контакты</Text>
           </TouchableOpacity>
+
+          <View>
+            <TouchableOpacity onPress={handleLogout} activeOpacity={0.8}>
+              <Text
+                style={{
+                  color: '#ffffff',
+                  letterSpacing: 1.5,
+                }}>
+                Выйти
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <Text style={styles.title}>Find Awesome Photos</Text>
+        <Text style={styles.title}>Поиск фото</Text>
 
         <View style={styles.searchBarContainer}>
           <TextInput
-            placeholder="search inspiration ..."
+            placeholder="Найти вдохновение ..."
             style={styles.searchBarInput}
             placeholderTextColor="#9ca1a2"
           />
@@ -67,7 +83,7 @@ export const Home = () => {
                 style={{
                   color: isPopularSelected ? '#044244' : '#9ca1a2',
                 }}>
-                MOST POPULAR
+                ПОПУЛЯРНЫЕ
               </Text>
             </TouchableOpacity>
 
@@ -83,7 +99,7 @@ export const Home = () => {
                 style={{
                   color: isPopularSelected ? '#9ca1a2' : '#044244',
                 }}>
-                RECENT
+                НЕДАВНИЕ
               </Text>
             </TouchableOpacity>
           </View>
@@ -94,13 +110,13 @@ export const Home = () => {
                 navigation.navigate('Detail', {
                   user: {
                     id: 1,
-                    name: 'Max Bator',
+                    name: 'Макс Батор',
                     photo: images.profile1,
-                    location: 'Moscow, Russia',
+                    location: 'Москва, Россия',
                   },
                 })
               }
-              name="Max Bator"
+              name="Макс Батор"
               profileImage={images.profile1}
               postImage={images.post5}
             />
@@ -114,13 +130,13 @@ export const Home = () => {
                 navigation.navigate('Detail', {
                   user: {
                     id: 2,
-                    name: 'Erka Berka',
+                    name: 'Эрика Берка',
                     photo: images.profile2,
-                    location: 'Minsk, Belarus',
+                    location: 'Минск, Беларусь',
                   },
                 })
               }
-              name="Erka Berka"
+              name="Эрика Берка"
               profileImage={images.profile2}
               postImage={images.post6}
             />
@@ -132,13 +148,13 @@ export const Home = () => {
                 navigation.navigate('Detail', {
                   user: {
                     id: 3,
-                    name: 'Max Bator',
+                    name: 'Макс Батор',
                     photo: images.profile3,
-                    location: 'Mogilev, Belarus',
+                    location: 'Могилев, Беларусь',
                   },
                 })
               }
-              name="Max Bator"
+              name="Макс Батор"
               profileImage={images.profile3}
               postImage={images.post3}
             />

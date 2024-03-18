@@ -14,8 +14,8 @@ import { IUser } from '@src/types';
 
 const defaultUser: IUser = {
   id: 0,
-  name: 'Ksenia Bator',
-  location: 'Kiev, Ukraine',
+  name: 'Ксения Батор',
+  location: 'Киев, Украина',
   photo: images.profile2,
 };
 
@@ -117,7 +117,7 @@ export const Detail = ({ route }: DetailProps) => {
                 color: '#9ca1a2',
                 alignSelf: 'center',
               }}>
-              photos
+              фото
             </Text>
           </View>
 
@@ -136,7 +136,7 @@ export const Detail = ({ route }: DetailProps) => {
                 color: '#9ca1a2',
                 alignSelf: 'center',
               }}>
-              followers
+              подписчиков
             </Text>
           </View>
 
@@ -155,7 +155,7 @@ export const Detail = ({ route }: DetailProps) => {
                 color: '#9ca1a2',
                 alignSelf: 'center',
               }}>
-              follows
+              подписок
             </Text>
           </View>
         </View>
@@ -178,7 +178,7 @@ export const Detail = ({ route }: DetailProps) => {
             style={{
               color: isCollectionSelected ? '#FFF' : '#9ca1a2',
             }}>
-            COLLECTIONS
+            КОЛЛЕКЦИИ
           </Text>
         </TouchableOpacity>
 
@@ -194,7 +194,7 @@ export const Detail = ({ route }: DetailProps) => {
             style={{
               color: isCollectionSelected ? '#9ca1a2' : '#FFF',
             }}>
-            FEATURED
+            ИЗБРАННОЕ
           </Text>
         </TouchableOpacity>
       </View>
@@ -249,14 +249,14 @@ export const Detail = ({ route }: DetailProps) => {
                 color: '#FFF',
                 fontSize: 15,
               }}>
-              Nature Collections
+              Природные коллекции
             </Text>
             <Text
               style={{
                 color: '#dedede',
                 fontSize: 12,
               }}>
-              1,003 photos
+              1,003 фото
             </Text>
           </View>
         </View>

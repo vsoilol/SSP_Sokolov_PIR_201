@@ -11,4 +11,5 @@ export const images = {
   profile1: require('./images/profile1.jpg'),
   profile2: require('./images/profile2.jpg'),
   profile3: require('./images/profile3.jpg'),
+  doobrySuccess: require('./images/doobry-success.png'),
 };
