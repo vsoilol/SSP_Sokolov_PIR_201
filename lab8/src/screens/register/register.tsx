@@ -1,4 +1,4 @@
-import { Alert, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
