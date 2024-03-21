@@ -3,8 +3,9 @@ import Button from '@components/button';
 import { useAppNavigation } from '@hooks/use-app-navigation';
 
 import styles from './styles';
+import { WelcomeProps } from '@my-types/route';
 
-export const Welcome = () => {
+export const Welcome = ({ route }: WelcomeProps) => {
   const navigation = useAppNavigation();
 
   const handleLogout = () => {
@@ -14,6 +15,12 @@ export const Welcome = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Добро пожаловать</Text>
+
+      <Text>Логин</Text>
+      <Text>{route.params?.userCredentials.login}</Text>
+
+      <Text>Пароль</Text>
+      <Text>{route.params?.userCredentials.password}</Text>
 
       <Button
         title="Выйти"

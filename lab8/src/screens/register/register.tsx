@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import { Formik } from 'formik';
+import { Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
 import Button from '@components/button';
@@ -11,6 +11,9 @@ import { COLORS } from '@src/constants';
 
 import styles from './styles';
 import globalStyles from '@core/global-styles';
+import { RegisterProps } from '@my-types/route';
+import { useRef } from 'react';
+import { IUserCredentials } from '@my-types/user-credentials.interface';
 
 interface FormValues {
   email: string;
@@ -18,17 +21,34 @@ interface FormValues {
   passwordConfirmation: string;
 }
 
-const initialValues: FormValues = {
-  email: '',
-  password: '',
-  passwordConfirmation: '',
-};
-
-export const Register = () => {
+export const Register = ({ route }: RegisterProps) => {
   const navigation = useAppNavigation();
+  const ref = useRef<FormikProps<FormValues>>(null);
+
+  const onNavigateLogin = () => {
+    const value = ref.current!.values;
+
+    const userCredentials: IUserCredentials = {
+      login: value.email,
+      password: value.password,
+    };
+
+    navigation.navigate('Login', { userCredentials: userCredentials });
+  };
+
+  const initialValues =
+    route.params?.userCredentials !== undefined
+      ? {
+          email: route.params?.userCredentials.login,
+          password: route.params?.userCredentials.password,
+          passwordConfirmation: route.params?.userCredentials.password,
+        }
+      : { email: '', password: '', passwordConfirmation: '' };
 
   const handleSubmit = (values: FormValues) => {
-    navigation.navigate('Welcome');
+    navigation.navigate('Welcome', {
+      userCredentials: { login: values.email, password: values.password },
+    });
   };
 
   const validationSchema = Yup.object().shape({
@@ -52,6 +72,7 @@ export const Register = () => {
       </Text>
 
       <Formik
+        innerRef={ref}
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}>
@@ -92,7 +113,12 @@ export const Register = () => {
       </Formik>
 
       <View style={styles.linkContainer}>
-        <ScreenLink screenName="Login" linkColor={COLORS.RED} text="Войти" />
+        <ScreenLink
+          onNavigate={onNavigateLogin}
+          screenName="Login"
+          linkColor={COLORS.RED}
+          text="Войти"
+        />
       </View>
     </View>
   );

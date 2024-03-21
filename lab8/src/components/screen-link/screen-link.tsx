@@ -6,6 +6,7 @@ interface IScreenLinkProps {
   text: string;
   linkColor: string;
   activeOpacity?: number;
+  onNavigate: () => void;
 }
 
 export const ScreenLink = ({
@@ -13,6 +14,7 @@ export const ScreenLink = ({
   text,
   linkColor,
   activeOpacity,
+  onNavigate,
 }: IScreenLinkProps) => {
   const navigation = useAppNavigation();
 
@@ -21,7 +23,7 @@ export const ScreenLink = ({
   };
 
   return (
-    <TouchableOpacity onPress={handlePress} activeOpacity={activeOpacity}>
+    <TouchableOpacity onPress={onNavigate} activeOpacity={activeOpacity}>
       <Text
         style={{
           color: linkColor,

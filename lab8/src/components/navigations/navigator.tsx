@@ -12,12 +12,12 @@ export const Navigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Welcome"
+        initialRouteName="Login"
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Register">
           {props => (
             <BaseLayout>
-              <Register />
+              <Register {...props} />
             </BaseLayout>
           )}
         </Stack.Screen>
@@ -25,7 +25,7 @@ export const Navigator = () => {
         <Stack.Screen name="Login">
           {props => (
             <BaseLayout>
-              <Login />
+              <Login {...props} />
             </BaseLayout>
           )}
         </Stack.Screen>
@@ -33,7 +33,7 @@ export const Navigator = () => {
         <Stack.Screen name="Welcome">
           {props => (
             <BaseLayout>
-              <Welcome />
+              <Welcome {...props} />
             </BaseLayout>
           )}
         </Stack.Screen>

@@ -1,5 +1,5 @@
-import { Alert, Text, View } from 'react-native';
-import { Formik } from 'formik';
+import { Text, View } from 'react-native';
+import { Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
 import Button from '@components/button';
@@ -11,22 +11,43 @@ import { COLORS } from '@src/constants';
 
 import styles from './styles';
 import globalStyles from '@core/global-styles';
+import { useRef } from 'react';
+import { IUserCredentials } from '@my-types/user-credentials.interface';
+import { LoginProps } from '@my-types/route';
 
 interface FormValues {
   email: string;
   password: string;
 }
 
-const initialValues: FormValues = {
-  email: '',
-  password: '',
-};
-
-export const Login = () => {
+export const Login = ({ route }: LoginProps) => {
+  const ref = useRef<FormikProps<FormValues>>(null);
   const navigation = useAppNavigation();
 
+  const initialValues =
+    route.params?.userCredentials !== undefined
+      ? {
+          email: route.params?.userCredentials.login,
+          password: route.params?.userCredentials.password,
+          passwordConfirmation: route.params?.userCredentials.password,
+        }
+      : { email: '', password: '', passwordConfirmation: '' };
+
   const handleSubmit = (values: FormValues) => {
-    navigation.navigate('Welcome');
+    navigation.navigate('Welcome', {
+      userCredentials: { login: values.email, password: values.password },
+    });
+  };
+
+  const onNavigateRegister = () => {
+    const value = ref.current!.values;
+
+    const userCredentials: IUserCredentials = {
+      login: value.email,
+      password: value.password,
+    };
+
+    navigation.navigate('Register', { userCredentials: userCredentials });
   };
 
   const validationSchema = Yup.object().shape({
@@ -46,6 +67,7 @@ export const Login = () => {
       </Text>
 
       <Formik
+        innerRef={ref}
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}>
@@ -80,6 +102,7 @@ export const Login = () => {
 
       <View style={styles.linkContainer}>
         <ScreenLink
+          onNavigate={onNavigateRegister}
           screenName="Register"
           linkColor={COLORS.GREEN}
           text="Зарегистрироваться"
